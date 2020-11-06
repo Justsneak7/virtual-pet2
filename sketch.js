@@ -1,11 +1,13 @@
 var database ,dog,dog1,dog2
-var position
-//var form
+var position;
+
+var dog,happydDog,database,foodStock,foodS;
+
 var feed,add
 var foodobject
 var Feedtime
 var Lastfeed
-//Create variables here
+
 
 function preload()
 
@@ -26,7 +28,9 @@ function setup() {
   dog.addImage(dogimg1)
   dog.scale=0.2
   
- 
+  textSize(20);
+  fill("black");
+  text("Food Remaining:" + foodS ,180,150);
 
   var dogo = database.ref('Food');
   dogo.on("value", readPosition, showError);
@@ -42,19 +46,20 @@ add.mousePressed(AddFood)
 
 
 function draw(){
- { background(46,139,87);
+  background(46,139,87);
  foodobject.display()
  
- }
- drawSprites();
-  
+Feedtime = database.ref('FeedTime');
+Feedtime.on('value',function(data){
+    Lastfeed = data.val();
+});
+
   fill(255,255,254);
  textSize(15);
 
-  // text("Note: Press UP_ARROW Key To Feed Drago Milk!",130,10,300,20);
- 
-  //add styles here
-drawSprites();
+  
+ drawSprites();
+  
 }
 function readPosition(data){
   position = data.val();
