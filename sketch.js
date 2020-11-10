@@ -54,6 +54,9 @@ Feedtime.on('value',function(data){
     Lastfeed = data.val();
 });
 
+textSize(24);
+text("Last fed: " + Lastfeed,400,100);
+
   fill(255,255,254);
  textSize(15);
 
